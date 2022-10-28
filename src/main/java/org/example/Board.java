@@ -5,19 +5,26 @@ import java.util.List;
 
 public class Board {
 
-  public boolean hasSameNumberInRow(int row) {
+  private final Integer[] numbers;
+
+  private Board(Integer[] numbers) {
+    this.numbers = numbers;
+  }
+
+  public static Board of(Integer[] numbers) {
+    return new Board(numbers);
+  }
+
+  public List<BoardChunk> columns() {
+    return List.of(BoardChunk.of(numbers));
+  }
+
+  public List<BoardChunk> rows() {
     throw new UnsupportedOperationException("Not Implemented!");
   }
 
-  public boolean hasSameNumberInCol(Column col) {
+  public List<BoardChunk> squares() {
     throw new UnsupportedOperationException("Not Implemented!");
   }
 
-  public boolean hasSameNumberInSquare(int square) {
-    throw new UnsupportedOperationException("Not Implemented!");
-  }
-
-  public List<Column> columns() {
-    throw new UnsupportedOperationException("Not Implemented!");
-  }
 }

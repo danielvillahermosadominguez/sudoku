@@ -4,20 +4,16 @@ import java.util.List;
 
 public class SudokuValidator {
   public boolean isValid(Board board) {
-    if (board.hasSameNumberInRow(0)) {
-      return false;
-    }
-    if (hasAnyColumnWithSameNumber(board)) {
-      return false;
-    }
-    if (board.hasSameNumberInSquare(0)) {
-      return false;
-    }
-    return true;
+    List<BoardChunk> rows = board.rows();
+    List<BoardChunk> columns = board.columns();
+    List<BoardChunk> squares = board.squares();
+
+    return noDuplicated(rows) &&
+      noDuplicated(columns) &&
+      noDuplicated(squares);
   }
 
-  private boolean hasAnyColumnWithSameNumber(Board board) {
-    List<Column> columns = board.columns();
-    return columns.stream().anyMatch(board::hasSameNumberInCol);
+  private boolean noDuplicated(List<BoardChunk> chunks) {
+    return !chunks.stream().anyMatch(BoardChunk::hasDuplicatedNumber);
   }
 }
