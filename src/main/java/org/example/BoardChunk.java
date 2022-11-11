@@ -30,4 +30,11 @@ public class BoardChunk {
     public int hashCode() {
         return Arrays.hashCode(numbers);
     }
+
+    @Override
+    public String toString() {
+        return "BoardChunk{" +
+                "numbers=" + Arrays.toString(numbers) +
+                '}';
+    }
 }

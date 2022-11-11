@@ -106,7 +106,40 @@ public class BoardShould {
     List<BoardChunk> rows = board.rows();
 
     assertThat(rows)
-      .containsExactly(firstRow, secondRow, thirdRow);
+            .containsExactly(firstRow, secondRow, thirdRow);
   }
+
+  @Test
+  void square_return_one_element_when_board_has_one_dimension() {
+    Board board = Board.of(new Integer[][]{{1}});
+    BoardChunk expected = BoardChunk.of(new Integer[]{1});
+
+    List<BoardChunk> squares = board.squares();
+
+    assertThat(squares)
+            .containsExactly(expected);
+  }
+
+
+  @Test
+  void squares_return_two_columns_when_board_has_two_dimension() {
+    Board board = Board.of(new Integer[][]{
+            {1, 2,  3,  4},
+            {5, 6,  7,  8},
+            {9, 10, 11, 12},
+            {13, 14, 15, 16}
+    });
+
+    BoardChunk firstSquare = BoardChunk.of(new Integer[]{1, 2,5,6});
+    BoardChunk secondSquare = BoardChunk.of(new Integer[]{3,4,7, 8});
+    BoardChunk thirdSquare = BoardChunk.of(new Integer[]{9,10,13, 14});
+    BoardChunk fourthSquare = BoardChunk.of(new Integer[]{11,12,15, 16});
+
+    List<BoardChunk> squares = board.squares();
+
+    assertThat(squares)
+            .containsExactly(firstSquare, secondSquare,thirdSquare,fourthSquare);
+  }
+
 
 }

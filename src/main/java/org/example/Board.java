@@ -1,8 +1,7 @@
 package org.example;
 
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +36,41 @@ public class Board {
   }
 
   public List<BoardChunk> squares() {
-    throw new UnsupportedOperationException("Not Implemented!");
+    if(numbers.length == 1) {
+      return rows();
+    }
+
+    List<BoardChunk> result = new ArrayList<>();
+    int limit = (int) Math.sqrt(numbers.length);
+    for(int square = 0;square< numbers.length;square++) {
+      List<Integer> boardChunkContent = new ArrayList<>();
+      int init = square* limit;
+      int end = init + limit;
+      for (int col =init; col < end; col++) {
+        for (int row = 0; row < limit; col++) {
+          boardChunkContent.add(numbers[row + square][col + (square % limit)]);
+        }
+      }
+      result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[boardChunkContent.size()])));
+    }
+
+
+  /*  int limit = (int) Math.sqrt(numbers.length);
+    for(int square = 0;square< numbers.length;square++) {
+      List<Integer> boardChunkContent = new ArrayList<>();
+
+      for (int row = 0; row < limit; row++) {
+        for (int col = 0; col < limit; col++) {
+          boardChunkContent.add(numbers[row + square][col + (square % limit)]);
+        }
+      }
+      result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[boardChunkContent.size()])));
+    }*/
+   /* result.add(BoardChunk.of(new Integer[] {numbers[0][0], numbers[0][1], numbers[1][0], numbers[1][1]}));
+    result.add(BoardChunk.of(new Integer[] {numbers[0][2], numbers[0][3], numbers[1][2], numbers[1][3]}));
+    result.add(BoardChunk.of(new Integer[] {numbers[2][0], numbers[2][1], numbers[3][0], numbers[3][1]}));
+    result.add(BoardChunk.of(new Integer[] {numbers[2][2], numbers[2][3], numbers[3][2], numbers[3][3]}));*/
+    return result;
   }
 
   private Integer[][] transpose() {
