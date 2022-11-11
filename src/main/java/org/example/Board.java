@@ -45,8 +45,9 @@ public class Board {
       //0, 1 -> 0
       //2, 3 - 2
       if (square == 0 || square == 1) {
+
         List<Integer> boardChunkContent = new ArrayList<>();
-        for (int i = 0; i < limit; i++) {
+        for (int i = (square/limit)*square; i < limit+(square/limit)*square; i++) {
           for (int j = 0 + (limit * square); j < limit + (limit * square); j++) {
             boardChunkContent.add(numbers[i][j]);
           }
@@ -55,8 +56,8 @@ public class Board {
       }
       if (square == 2) {
         List<Integer> boardChunkContent = new ArrayList<>();
-        for (int i = 0; i < limit; i++) {
-          for (int j = 0; j < limit; j++) {
+        for (int i = (square/limit)*square; i < limit+(square/limit)*square; i++) {
+          for (int j = 0 + square%limit; j < limit; j++) {
             boardChunkContent.add(numbers[i][j]);
           }
         }
