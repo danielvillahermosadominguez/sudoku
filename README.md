@@ -3,8 +3,9 @@ https://www.codurance.com/katalyst/sudoku-kata
 - TDD clasico con inside-out
 - Practicar Diseño OOP
 
-- Experimento fallido: eliminar lo que hemos hecho y volver a hacer los square, paso a paso y pensando.
+- Experimento fallido: Dani ha hecho una pequeña implementación de square. Se sube para continuar siguiente día.
+- Buena Practica : cuando nos atascamos, nos separamos.
 - siguientes puntos:
-  - Implementar square de board
+  - Continuar implementando square de board
   - Carga de CSV
   - Resolver Sudoku
