@@ -120,7 +120,6 @@ public class BoardShould {
             .containsExactly(expected);
   }
 
-
   @Test
   void squares_return_two_columns_when_board_has_two_dimension() {
     Board board = Board.of(new Integer[][]{

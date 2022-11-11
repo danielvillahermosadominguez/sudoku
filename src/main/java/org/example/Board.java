@@ -36,76 +36,21 @@ public class Board {
   }
 
   public List<BoardChunk> squares() {
-    if (numbers.length == 1) {
-      return rows();
-    }
     List<BoardChunk> result = new ArrayList<>();
     int limit = (int) Math.sqrt(numbers.length);
     for (int square = 0; square < numbers.length; square++) {
-      //0, 1 -> 0
-      //2, 3 - 2
-      if (square == 0 || square == 1) {
-
-        List<Integer> boardChunkContent = new ArrayList<>();
-        for (int i = (square/limit)*square; i < limit+(square/limit)*square; i++) {
-          for (int j = 0 + (limit * square); j < limit + (limit * square); j++) {
-            boardChunkContent.add(numbers[i][j]);
-          }
-        }
-        result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[boardChunkContent.size()])));
-      }
-      if (square == 2) {
-        List<Integer> boardChunkContent = new ArrayList<>();
-        for (int i = (square/limit)*square; i < limit+(square/limit)*square; i++) {
-          for (int j = 0 + square%limit; j < limit; j++) {
-            boardChunkContent.add(numbers[i][j]);
-          }
-        }
-        result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[boardChunkContent.size()])));
-        //result.add(BoardChunk.of(new Integer[]{numbers[2][0], numbers[2][1], numbers[3][0], numbers[3][1]}));
-      }
-      if (square == 3) {
-        result.add(BoardChunk.of(new Integer[]{numbers[2][2], numbers[2][3], numbers[3][2], numbers[3][3]}));
-      }
-    }
-
-      /* result.add(BoardChunk.of(new Integer[] {numbers[0][0], numbers[0][1], numbers[1][0], numbers[1][1]}));
-    result.add(BoardChunk.of(new Integer[] {numbers[0][2], numbers[0][3], numbers[1][2], numbers[1][3]}));
-    result.add(BoardChunk.of(new Integer[] {numbers[2][0], numbers[2][1], numbers[3][0], numbers[3][1]}));
-    result.add(BoardChunk.of(new Integer[] {numbers[2][2], numbers[2][3], numbers[3][2], numbers[3][3]}));*/
-
-    /*
-    List<BoardChunk> result = new ArrayList<>();
-    int limit = (int) Math.sqrt(numbers.length);
-    for(int square = 0;square< numbers.length;square++) {
       List<Integer> boardChunkContent = new ArrayList<>();
-      int init = square* limit;
-      int end = init + limit;
-      for (int col =init; col < end; col++) {
-        for (int row = 0; row < limit; col++) {
-          boardChunkContent.add(numbers[row + square][col + (square % limit)]);
+      int initVer = ((square/limit)*limit);
+      int endVer = limit + initVer;
+      for (int i = initVer; i < endVer; i++) {
+        int initHor = (square % limit)*limit;
+        int endHor = limit + initHor;
+        for (int j = initHor; j < endHor; j++) {
+          boardChunkContent.add(numbers[i][j]);
         }
       }
       result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[boardChunkContent.size()])));
     }
-     */
-
-
-  /*  int limit = (int) Math.sqrt(numbers.length);
-    for(int square = 0;square< numbers.length;square++) {
-      List<Integer> boardChunkContent = new ArrayList<>();
-
-      for (int row = 0; row < limit; row++) {
-        for (int col = 0; col < limit; col++) {
-          boardChunkContent.add(numbers[row + square][col + (square % limit)]);
-        }
-      }
-      result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[boardChunkContent.size()])));
-    }*/
-   /* result.add(BoardChunk.of(new Integer[] {numbers[0][0], numbers[0][1], numbers[1][0], numbers[1][1]}));
-    result.add(BoardChunk.of(new Integer[] {numbers[0][2], numbers[0][3], numbers[1][2], numbers[1][3]}));
-    result.add(BoardChunk.of(new Integer[] {numbers[2][0], numbers[2][1], numbers[3][0], numbers[3][1]}));
-    result.add(BoardChunk.of(new Integer[] {numbers[2][2], numbers[2][3], numbers[3][2], numbers[3][3]}));*/
     return result;
   }
 
