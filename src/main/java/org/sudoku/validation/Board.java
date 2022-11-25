@@ -1,11 +1,10 @@
-package org.example;
+package org.sudoku.validation;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Board {
 

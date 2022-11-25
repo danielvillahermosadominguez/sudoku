@@ -1,4 +1,4 @@
-package org.example;
+package org.sudoku.validation;
 
 import org.junit.jupiter.api.Test;
 

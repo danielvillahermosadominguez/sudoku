@@ -1,4 +1,4 @@
-package org.example;
+package org.sudoku.validation;
 
 import java.util.List;
 
