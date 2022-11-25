@@ -1,6 +1,9 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BoardChunk {
 
@@ -15,7 +18,8 @@ public class BoardChunk {
     }
 
     public boolean hasDuplicatedNumber() {
-        throw new UnsupportedOperationException();
+        Set<Integer> set = new HashSet<>(Arrays.asList(numbers));
+        return numbers.length != set.size();
     }
 
     @Override

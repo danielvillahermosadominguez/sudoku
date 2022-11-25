@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Board {
 
@@ -37,21 +38,45 @@ public class Board {
 
   public List<BoardChunk> squares() {
     List<BoardChunk> result = new ArrayList<>();
-    int limit = (int) Math.sqrt(numbers.length);
+
     for (int square = 0; square < numbers.length; square++) {
-      List<Integer> boardChunkContent = new ArrayList<>();
-      int initVer = ((square/limit)*limit);
-      int endVer = limit + initVer;
-      for (int i = initVer; i < endVer; i++) {
-        int initHor = (square % limit)*limit;
-        int endHor = limit + initHor;
-        for (int j = initHor; j < endHor; j++) {
-          boardChunkContent.add(numbers[i][j]);
-        }
-      }
-      result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[boardChunkContent.size()])));
+      List<Integer> boardChunkContent = square(square);
+      result.add(BoardChunk.of(boardChunkContent.toArray(new Integer[]{})));
     }
     return result;
+  }
+
+  private List<Integer> square(int square) {
+    List<Integer> boardChunkContent = new ArrayList<>();
+
+    int squareVerticalPosition = square / dimension();
+
+    for (int row = startIndex(squareVerticalPosition); row < endIndex(squareVerticalPosition); row++) {
+      boardChunkContent.addAll(horizontalRows(square, numbers[row]));
+    }
+    return boardChunkContent;
+  }
+
+  private List<Integer> horizontalRows(int square, Integer[] verticalRows) {
+    List<Integer> result = new ArrayList<>();
+    int squareHorizontalPosition = square % dimension();
+
+    for (int column = startIndex(squareHorizontalPosition); column < endIndex(squareHorizontalPosition); column++) {
+      result.add(verticalRows[column]);
+    }
+    return result;
+  }
+
+  private int startIndex(int index) {
+    return index * dimension();
+  }
+
+  private int endIndex(int index) {
+    return startIndex(index) + dimension();
+  }
+
+  private int dimension() {
+    return (int) Math.sqrt(numbers.length);
   }
 
   private Integer[][] transpose() {
