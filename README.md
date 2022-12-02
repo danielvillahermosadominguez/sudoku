@@ -5,12 +5,11 @@ https://www.codurance.com/katalyst/sudoku-kata
 
 - Siguiente paso:
 
-- Carga de CSV
-Creamos el interface para el lector de CSV
-Integer[][] numbers = csv.read(input);
-
-Estamos haciendo el test en FooShould. Nos falta poner el nombre y definir 
-el objeto, etc.
+- Continuar con la carga de CSV e interface del lector
+- Usar casos de aceptación con los ejemplos que vienen: leyendo CSV, preguntandole si es valido
+o no.
+- Level 2: resolverlo
+- Level 3: creador de sudoko
 
 
 - Buena Practica : cuando nos atascamos, nos separamos.
