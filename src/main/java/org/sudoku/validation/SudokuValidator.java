@@ -8,12 +8,16 @@ public class SudokuValidator {
     List<BoardChunk> columns = board.columns();
     List<BoardChunk> squares = board.squares();
 
-    return noDuplicated(rows) &&
-      noDuplicated(columns) &&
-      noDuplicated(squares);
+    return isChunksValid(rows) &&
+      isChunksValid(columns) &&
+      isChunksValid(squares);
   }
 
-  private boolean noDuplicated(List<BoardChunk> chunks) {
-    return !chunks.stream().anyMatch(BoardChunk::hasDuplicatedNumber);
+  private boolean isChunksValid(List<BoardChunk> chunks) {
+    return !chunks.stream().anyMatch(this::isChunkInvalid);
+  }
+
+  private boolean isChunkInvalid(BoardChunk chunk) {
+    return chunk.hasDuplicatedNumber() || chunk.hasAHole();
   }
 }

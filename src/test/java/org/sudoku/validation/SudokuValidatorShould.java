@@ -53,4 +53,14 @@ class SudokuValidatorShould {
     assertFalse(sudoku.isValid(board));
   }
 
+  @Test
+  void board_has_a_hole_in_row_should_be_invalid() {
+    BoardChunk rows = mock(BoardChunk.class);
+    when(board.rows()).thenReturn(List.of(rows));
+    when(rows.hasDuplicatedNumber()).thenReturn(false);
+    when(rows.hasAHole()).thenReturn(true);
+
+    assertFalse(sudoku.isValid(board));
+  }
+
 }

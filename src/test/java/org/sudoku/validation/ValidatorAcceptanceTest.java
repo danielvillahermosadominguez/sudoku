@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AcceptanceTest {
+public class ValidatorAcceptanceTest {
     @Test
     void a_four_dimension_not_valid_sudoku() {
         Board board = Board.of(new Integer[][]{

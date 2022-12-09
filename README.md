@@ -5,14 +5,8 @@ https://www.codurance.com/katalyst/sudoku-kata
 
 - Siguiente paso:
 
-- Continuar con la carga de CSV e interface del lector
-- Usar casos de aceptación con los ejemplos que vienen: leyendo CSV, preguntandole si es valido
-o no.
-- Level 2: resolverlo
-- Level 3: creador de sudoko
+Nivel 2. Empezar a resolver sudoku.
 
-
-- Buena Practica : cuando nos atascamos, nos separamos.
-- siguientes puntos:
-
-  - Resolver Sudoku
+- Empezamos con un test de 4x4 y un solo hole
+- Primer approach, hacer una función que transforme celda a celda los HOLE hasta encontrar uno valido
+- No tiene implementación

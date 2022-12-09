@@ -2,6 +2,7 @@ package org.sudoku.csv;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
+import org.sudoku.validation.Board;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Csv {
-  public static Integer HOLE = 0;
   public Integer[][] read(InputStream input) throws IOException, CsvException {
     try (CSVReader csvReader = new CSVReader(new InputStreamReader(input))) {
       return readLines(csvReader);
@@ -41,7 +41,7 @@ public class Csv {
 
   private Integer parseInt(String text) {
     if (text.isBlank()) {
-      return HOLE;
+      return Board.HOLE;
     }
 
     return Integer.parseInt(text);

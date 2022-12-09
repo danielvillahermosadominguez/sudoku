@@ -4,9 +4,12 @@ package org.sudoku.validation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Board {
+
+  public static final Integer HOLE = 0;
 
   private final Integer[][] numbers;
 
@@ -97,6 +100,5 @@ public class Board {
       throw new InvalidBoardException();
     }
   }
-
 
 }
